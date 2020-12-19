@@ -18,9 +18,14 @@ function addtional()
         node.appendChild(textnode);
         document.getElementById("list").appendChild(node);
 
+        /* 글 수정 이벤트 */
+        node.onclick = function(){
+            modify(node.id);
+        }
+
         document.getElementById("input").value = "";
         
-        /* 추가한 글 바로 옆에 제거 버튼 생성 */
+        /* 제거 버튼 생성 */
         var remove_btn = document.createElement("BUTTON");
         remove_btn.id = i;
         remove_btn.className="fas fa-minus";
@@ -46,4 +51,10 @@ function remove(a)
     n.style.display="none";
     bnt.style.display = "none";
     b.style.display = "none";
+}
+
+function modify(a)
+{
+    var value = prompt("Modify", "What is your list?");
+    document.getElementById(a).innerHTML = value;
 }
