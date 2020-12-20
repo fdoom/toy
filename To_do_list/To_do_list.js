@@ -129,3 +129,9 @@ function Next(n, a, b)
     br.id= a + n;
     document.getElementById(b).appendChild(br);
 }
+
+window.addEventListener("keydown", function(event) {
+    if(event.key == 'Enter'){
+        click_event();
+    }
+  }, true);
