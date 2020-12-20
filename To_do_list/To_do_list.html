@@ -4,18 +4,22 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "top">
-            <h1>To Do List</h1>
-            <input type="text" id="input" placeholder="What to do?">
-            <button type="button" class="fas fa-plus" onclick="click_event()"></button>
-        </div>
+        <details open>
+            <summary>
+                <div class = "top">
+                    <h1>To Do List</h1>
+                    <input type="text" id="input" placeholder="What to do?">
+                    <button type="button" class="fas fa-plus" onclick="click_event()"></button>
+                </div>
+                
+            </summary>
+            <div id="list"></div>
+        </details>
         
-        <div id="list"></div>
-
-        <h1>Done List</h1>
-        <div id = "done">
-
-        </div>
+        <details open>
+            <summary><h1 class = "middle">Done List</h1></summary>
+        <div id = "done"></div>
+        </details>
     </body>
     <script type="text/javascript" src="To_do_list.js"></script>
     <script src="https://kit.fontawesome.com/f1fb370a81.js" crossorigin="anonymous"></script>

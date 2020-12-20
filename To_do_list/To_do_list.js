@@ -134,4 +134,4 @@ window.addEventListener("keydown", function(event) {
     if(event.key == 'Enter'){
         click_event();
     }
-  }, true);
+}, true);
