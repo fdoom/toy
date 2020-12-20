@@ -1,0 +1,65 @@
+*{
+}
+
+h1{
+    font-size: 40px;
+    margin:5px;
+    padding-top: 40px;
+}
+.top, h1{
+    text-align: center;
+    background-color:rgb(87, 250, 209);
+}
+input{
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.fa fas-plus{
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+button{
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgba(128, 128, 128, 0.479);
+    color: white;
+}
+
+span{
+    font-size: 34px;
+    float: left;
+    width: 88%;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+span:hover{
+    background-color: rgba(128, 128, 128, 0.479);
+    cursor: pointer;
+}
+
+#done span{
+    width: 93.5%;
+}
