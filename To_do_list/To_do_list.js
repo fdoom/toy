@@ -4,6 +4,7 @@ function click_event()
 {
     var add = document.getElementById("input").value;
 
+    /* 어떠한 글도 입력하지않을 경우 */
     if(!add)
     {
         alert('Please input your list')
@@ -23,14 +24,14 @@ function click_event()
 }
 
 /* 글 추가 기능 및 수정 */
-function additional(a, n, b, c)
+function additional(text, n, id, spot)
 {
     /* 입력한 값 SPAN 태그로 추가하기*/
     var node = document.createElement("SPAN");
-    var textnode = document.createTextNode(a);
-    node.id = b + n;
+    var textnode = document.createTextNode(text);
+    node.id = id + n;
     node.appendChild(textnode);
-    document.getElementById(c).appendChild(node);
+    document.getElementById(spot).appendChild(node);
 
     node.onclick = function(){
         modify(node.id);
@@ -52,33 +53,31 @@ function doneBotton(n)
 }
 
 /* To do list의 목록들 완료 처리 */
-function done(r)
+function done(n)
 {
-    var value = document.getElementById('node' + r).innerHTML;
+    var value = document.getElementById('node' + n).innerHTML;
     
-    additional(value, r, 'node_d', 'done');
+    additional(value, n, 'node_d', 'done');
         
     /* Done list 삭제 버튼 */
     var remove_btn = document.createElement("BUTTON");
-    remove_btn.id = 'bnt' + r;
+    remove_btn.id = 'bnt' + n;
     remove_btn.className="fas fa-minus";
     document.getElementById("done").appendChild(remove_btn);
 
     remove_btn.onclick = function(){
-        remove_d(r, remove_btn.id, br.id);
+        remove_d('node_d' + n, remove_btn.id, 'br_d' + n);
     };
 
-    var br = document.createElement("BR");
-    br.id = 'br_d' + r;
-    document.getElementById("done").appendChild(br);
-    remove(r);
+    Next(n, 'br_d', 'done');
+    remove(n);
 }
 
 /* To do list 목록의 삭제 버튼 */
-function removeButton(a)
+function removeButton(n)
 {
     var remove_btn = document.createElement("BUTTON");
-    remove_btn.id = a;
+    remove_btn.id = n;
     remove_btn.className="fas fa-minus";
     remove_btn.onclick = function(){
         remove(remove_btn.id);
@@ -87,33 +86,33 @@ function removeButton(a)
 }
 
 /* To do list에 있는 글과 버튼 삭제 */
-function remove(a)
+function remove(n)
 {
     var arr = ['node', 'br', 'done', ''];
 
     for(var i = 0; i < 4; i++)
     {
-        var b = document.getElementById(arr[i] + a);
+        var b = document.getElementById(arr[i] + n);
         b.style.display = "none";
     }
 }
 
 /* 글 수정 */
-function modify(a)
+function modify(spot)
 {
     var value = prompt("Modify", "What is your list?");
     
     /* 수정하는 글에 어떠한 내용도 넣지않는다면 기존의 글 유지 */
     if(value)
     {
-        document.getElementById(a).innerHTML = value;
+        document.getElementById(spot).innerHTML = value;
     }
 }
 
 /* Done list 목록에 있는 글과 버튼 삭제 */
-function remove_d(n, bnt_i, br)
+function remove_d(node, bnt, br)
 {
-    var arr = ['node_d' + n, bnt_i,br]
+    var arr = [node, bnt, br];
 
     for(var i = 0; i < 3; i++)
     {
@@ -123,15 +122,9 @@ function remove_d(n, bnt_i, br)
 }
 
 /* br 태그 생성 */
-function Next(n, a, b)
+function Next(n, id, spot)
 {
     var br = document.createElement("BR");
-    br.id= a + n;
-    document.getElementById(b).appendChild(br);
+    br.id= id + n;
+    document.getElementById(spot).appendChild(br);
 }
-
-window.addEventListener("keydown", function(event) {
-    if(event.key == 'Enter'){
-        click_event();
-    }
-}, true);
