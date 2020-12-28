@@ -1,19 +1,23 @@
-var num = 19;
+let num = 21;
 
+/* 페이지 실행 시 글 목록 20개 생성 */
 window.onload = function(){
-    for(var i = 0; i < 19; i++)
+    for(let i = 0; i < 20; i++)
     {
         lorem_ipsum(i + 1);
     }
-    var a = document.scrollTop();
+    let a = document.scrollTop();
     alert(a);
 }
 
+/* 무작위 글 생성 */
 function lorem_ipsum(n)
 {
-    var Random = Math.random().toString(36).slice(2);
-    var long_Random = Math.random().toString(36).slice(2);
-    for(var i = 0; i < Math.random() * 10 * 10; i++)
+    let Random = Math.random().toString(36).slice(2);
+    let long_Random = Math.random().toString(36).slice(2);
+
+    /* 글 길이도 랜덤으로 글 내용 저장 */
+    for(let i = 0; i < Math.random() * 100; i++)
     {
         long_Random += Math.random().toString(36).slice(2);
     }
@@ -21,15 +25,19 @@ function lorem_ipsum(n)
     additional(Random, long_Random, n);
 }
 
+/* 해당하는 위치에 저장된 글들을 출력 */
 function additional(text, long_text, n)
 {
-    var number = document.createElement('div');
+    let number = document.createElement('div');
     number.className = 'number';
-    var main = document.createElement('div');
+
+    let main = document.createElement('div');
     main.className = 'main';
-    var title = document.createElement('h3');
+
+    let title = document.createElement('h3');
     title.className = 'title';
-    var content = document.createElement('p');
+    
+    let content = document.createElement('p');
     content.className = 'content';
 
     number.append(n);
@@ -42,11 +50,12 @@ function additional(text, long_text, n)
     document.getElementById('container').appendChild(main);
 }
 
+/* 입력한 값에 대한 글 제목 및 글 내용이 있는지 확인 */
 function filter(){
 
-    var value = document.getElementById("input").value;
-    var main = document.getElementsByClassName('main'); 
-    for(var i = 0; i < main.length; i++)
+    let value = document.getElementById("input").value;
+    let main = document.getElementsByClassName('main'); 
+    for(let i = 0; i < main.length; i++)
     {
         title = main[i].getElementsByClassName("title");
         content = main[i].getElementsByClassName("content");
@@ -62,25 +71,44 @@ function filter(){
     }
   }
 
+  /* 스크롤바 위치 확인 및 로딩 실행 */
   window.addEventListener('scroll', () => {
 	let scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
 	let windowHeight = window.innerHeight; // 스크린 창
     let fullHeight = document.body.scrollHeight; //  margin 값은 포함 x
 
-	if(scrollLocation + windowHeight >= fullHeight){
-        var loading = document.getElementById('load');
+    /* 50은 웹페이지 margin 값 */
+	if(scrollLocation + windowHeight >= fullHeight + 50){
+        let loading = document.getElementById('load');
         loading.style.display = "block";
         setTimeout(more, 3000);
-	}
+    }
+    
+    scrollFunction();
 })
 
-
+/* 로딩 종료 및 글 목록 추가 */
 function more()
 {
-    var loading = document.getElementById('load');
+    let loading = document.getElementById('load');
     loading.style.display = "none";
-    for(var i = 0; i < 3; i++)
+
+    /* 무작위 갯수의 글 추가 */
+    for(let i = 0; i <  Math.random() * 70; i++)
     {
         lorem_ipsum(num++);
     }
 }
+function scrollFunction() {
+    var btn = document.getElementById('btn');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  }
+  
+  function GoTop()
+  {
+      window.scrollTo(0,0);
+  }
