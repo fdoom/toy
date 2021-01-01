@@ -68,9 +68,9 @@ function filter() {
 
 /* 스크롤바 위치 확인 및 로딩 실행 */
 window.addEventListener('scroll', () => {
-    let scrollLocation = document.documentElement.scrollTop;
-    let windowHeight = window.innerHeight;
-    let fullHeight = document.body.scrollHeight;
+    let scrollLocation = document.documentElement.scrollTop;    //현재 스크롤 바 위치
+    let windowHeight = window.innerHeight;                      //화면으로 보이는 스크린 화면의 높이
+    let fullHeight = document.body.scrollHeight;                //웹 문서 중 body의 스크롤 높이
 
     /* 50은 웹페이지 margin 값 */
     if (scrollLocation + windowHeight >= fullHeight + 50) {
@@ -78,7 +78,6 @@ window.addEventListener('scroll', () => {
         loading.style.display = "block";
         setTimeout(more, 3000);
     }
-
     scrollFunction();
 })
 
@@ -92,6 +91,8 @@ function more() {
         lorem_ipsum(num++);
     }
 }
+
+/* 버튼 보이는 이벤트 */
 function scrollFunction() {
     var btn = document.getElementById('btn');
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -101,6 +102,7 @@ function scrollFunction() {
     }
 }
 
+/* 부드럽게 위로 가기 */
 function GoTop() {
-    window.scrollTo(0, 0);
+    window.scrollTo({top:0, behavior:'smooth'});
 }

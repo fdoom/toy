@@ -59,6 +59,7 @@ button{
     color: rgb(0, 183, 255);
     cursor: pointer;
     transition: 0.5s;
+    display: none;
 }
 
 button:hover{
