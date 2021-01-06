@@ -6,8 +6,6 @@ var data = [
 ];
 
 window.onload = function () {
-
-
   for (var i = 0; i < 12; i++) {
     create(i);
   }
@@ -17,16 +15,12 @@ function create(i) {
   var main = document.createElement("div")
   main.className = "main";
   main.onclick = function () {
-    speak(data[i][1], {
-      rate: 1,
-      pitch: 1.2,
-      lang: selectLang.options[selectLang.selectedIndex].value
-    })
+    speak(data[i][1], select.options[select.selectedIndex].value
+    )
   }
 
   var image = new Image();
   image.src = data[i][0];
-
 
   var comment = document.createElement("p");
   comment.className = "comment";
@@ -38,20 +32,15 @@ function create(i) {
   document.getElementById("container").appendChild(main);
 }
 
-function speak(text, opt_prop) {
+function speak(text, language) {
   if (typeof SpeechSynthesisUtterance === "undefined" || typeof window.speechSynthesis === "undefined") {
-    alert("이 브라우저는 음성 합성을 지원하지 않습니다.")
+    alert("This browser does not support speech synthesis.")
     return
   }
-
   window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
 
-  const prop = opt_prop
-
   const speechMsg = new SpeechSynthesisUtterance()
-  speechMsg.rate = prop.rate// 속도: 0.1 ~ 10      
-  speechMsg.pitch = prop.pitch// 음높이: 0 ~ 2
-  speechMsg.lang = prop.lang
+  speechMsg.lang = language;
   speechMsg.text = text
 
   // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
@@ -60,25 +49,16 @@ function speak(text, opt_prop) {
 
 
 // 이벤트 영역
-const selectLang = document.getElementById("select-lang")
+const select = document.getElementById("select-lang")
 const text = document.getElementById("text")
-const btnRead = document.getElementById("btn-read")
+const btn = document.getElementById("btn")
 
-btnRead.addEventListener("click", e => {
-  speak(text.value, {
-    rate: 1,
-    pitch: 1.2,
-    lang: selectLang.options[selectLang.selectedIndex].value
-  })
+btn.addEventListener("click", e => {
+  speak(text.value, select.options[select.selectedIndex].value)
 })
 
 function enter() {
-
   if (event.keyCode == 13) {
-    speak(text.value, {
-      rate: 1,
-      pitch: 1.2,
-      lang: selectLang.options[selectLang.selectedIndex].value
-    })
+    speak(text.value, select.options[select.selectedIndex].value)
   }
 }
