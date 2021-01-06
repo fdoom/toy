@@ -6,13 +6,20 @@
 </head>
 
 <body>
-    <select id="select-lang">
-        <option value="ko-KR">한국어</option>
-        <option value="ja-JP">일본어</option>
-        <option value="en-US" selected>영어</option>
-    </select>
-    <input id="text"></input>
-    <button id="btn-read">읽기</button>
+    <div class = "top">
+        <h1>Speech Text</h1>
+        <select id="select-lang">
+            <option value="ko-KR">한국어</option>
+            <option value="zh">중국어</option>
+            <option value="ja-JP">일본어</option>
+            <option value="en-US" selected>영어</option>
+        </select>
+        <input id="text" onkeypress="enter()"></input>
+        <button id="btn-read">읽기</button>
+    </div>
+    
+
+    
     <div id = "container">
         
     </div>

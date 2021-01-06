@@ -5,30 +5,28 @@ var data = [
   ["img/home.jpg", "I WANT TO GO HOME"], ["img/school.jpg", "I WANT TO GO TO SCHOOL"], ["img/grandma.jpg", "I WANT TO GO TO GRANDMAS"]
 ];
 
-window.onload = function (){
+window.onload = function () {
 
 
-  for(var i = 0; i < 12; i++)
-  {
+  for (var i = 0; i < 12; i++) {
     create(i);
   }
 }
 
-function create(i)
-{
+function create(i) {
   var main = document.createElement("div")
   main.className = "main";
-  main.onclick = function(){
+  main.onclick = function () {
     speak(data[i][1], {
       rate: 1,
       pitch: 1.2,
       lang: selectLang.options[selectLang.selectedIndex].value
-  })
+    })
   }
 
   var image = new Image();
   image.src = data[i][0];
-  
+
 
   var comment = document.createElement("p");
   comment.className = "comment";
@@ -41,23 +39,23 @@ function create(i)
 }
 
 function speak(text, opt_prop) {
-    if (typeof SpeechSynthesisUtterance === "undefined" || typeof window.speechSynthesis === "undefined") {
-        alert("이 브라우저는 음성 합성을 지원하지 않습니다.")
-        return
-    }
-    
-    window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
+  if (typeof SpeechSynthesisUtterance === "undefined" || typeof window.speechSynthesis === "undefined") {
+    alert("이 브라우저는 음성 합성을 지원하지 않습니다.")
+    return
+  }
 
-    const prop = opt_prop || {}
+  window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
 
-    const speechMsg = new SpeechSynthesisUtterance()
-    speechMsg.rate = prop.rate || 1 // 속도: 0.1 ~ 10      
-    speechMsg.pitch = prop.pitch || 1 // 음높이: 0 ~ 2
-    speechMsg.lang = prop.lang || "ko-KR"
-    speechMsg.text = text
-    
-    // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
-    window.speechSynthesis.speak(speechMsg)
+  const prop = opt_prop
+
+  const speechMsg = new SpeechSynthesisUtterance()
+  speechMsg.rate = prop.rate// 속도: 0.1 ~ 10      
+  speechMsg.pitch = prop.pitch// 음높이: 0 ~ 2
+  speechMsg.lang = prop.lang
+  speechMsg.text = text
+
+  // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
+  window.speechSynthesis.speak(speechMsg)
 }
 
 
@@ -67,9 +65,20 @@ const text = document.getElementById("text")
 const btnRead = document.getElementById("btn-read")
 
 btnRead.addEventListener("click", e => {
-    speak(text.value, {
-        rate: 1,
-        pitch: 1.2,
-        lang: selectLang.options[selectLang.selectedIndex].value
-    })
+  speak(text.value, {
+    rate: 1,
+    pitch: 1.2,
+    lang: selectLang.options[selectLang.selectedIndex].value
+  })
 })
+
+function enter() {
+
+  if (event.keyCode == 13) {
+    speak(text.value, {
+      rate: 1,
+      pitch: 1.2,
+      lang: selectLang.options[selectLang.selectedIndex].value
+    })
+  }
+}
