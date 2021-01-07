@@ -1,4 +1,4 @@
-var data = [
+let data = [
   ["img/water.jpg", "I'm THIRSTY"], ["img/hungry.jpg", "I'M HUNGRY"], ["img/tired.jpg", "I'M TIRED"],
   ["img/hurt.jpg", "I'M HURT"], ["img/happy.jpg", "I'M HAPPY"], ["img/angry.jpg", "I'M ANGRY"],
   ["img/sad.jpg", "I'M SAD"], ["img/scared.jpg", "I'M SCARED"], ["img/outside.jpg", "I WANT TO GO OUTSIDE"],
@@ -6,23 +6,23 @@ var data = [
 ];
 
 window.onload = function () {
-  for (var i = 0; i < 12; i++) {
+  for (let i = 0; i < 12; i++) {
     create(i);
   }
 }
 
 function create(i) {
-  var main = document.createElement("div")
+  let main = document.createElement("div")
   main.className = "main";
   main.onclick = function () {
     speak(data[i][1], select.options[select.selectedIndex].value
     )
   }
 
-  var image = new Image();
+  let image = new Image();
   image.src = data[i][0];
 
-  var comment = document.createElement("p");
+  let comment = document.createElement("p");
   comment.className = "comment";
   comment.append(data[i][1]);
 
@@ -38,6 +38,11 @@ function speak(text, language) {
     return
   }
   window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
+
+  if(!text)
+  {
+    text = "Please fill in the blank";
+  }
 
   const speechMsg = new SpeechSynthesisUtterance()
   speechMsg.lang = language;
