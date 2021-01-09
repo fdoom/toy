@@ -87,7 +87,7 @@ img, .main{
   
 @media (max-width: 700px) {
   #container {
-    grid-template-columns: 2fr;
+    grid-template-columns: 1fr;
   }
 }
   
