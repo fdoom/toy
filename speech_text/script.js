@@ -42,19 +42,19 @@ const text = document.getElementById("text")      //input 정보
 const btn = document.getElementById("btn")        //button 정보
 
 btn.addEventListener("click", e => {
-  speak(text.value, select.value)
+  speak(text.value, select.value);
 })
 
 /* enter키 누를 시 */
 function enter(event) {
   if (event.keyCode == 13) {
-    speak(text.value, select.value)
+    speak(text.value, select.value);
   }
 }
 
 /* 소리 출력 */
 function speak(text, language) {
-  window.speechSynthesis.cancel() // 초기화
+  window.speechSynthesis.cancel(); // 초기화
 
   /* input이 비어있다면 */
   if(!text)
@@ -62,9 +62,9 @@ function speak(text, language) {
     text = "Please fill in the blank";
   }
 
-  const speechMsg = new SpeechSynthesisUtterance()
+  const speechMsg = new SpeechSynthesisUtterance();
   speechMsg.lang = language;      //언어 설정
   speechMsg.text = text;          //글 설정
 
-  window.speechSynthesis.speak(speechMsg)   //소리 출력
+  window.speechSynthesis.speak(speechMsg);   //소리 출력
 }
