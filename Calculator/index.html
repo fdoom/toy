@@ -5,13 +5,20 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id = "history" class = "history">
+            <div class = "sub">History<spen class = "close" onclick="show()">x</spen></div>
+            <div id = "record"></div>
+        </div>
         <div class = "top">
             <h1>Calculator</h1>
-            <input id = "input" onkeypress="enter(event)"><button class = "ce" onclick = clearEntry()>CE</button>
+            <input id = "input" onkeypress="enter(event)">
+            <button class = "ce" onclick = "clearEntry()"">CE</button>
+            <button class="fas fa-history" onclick = "show()""></button>
         </div>
         
         <div id = "container"></div>
 
         <script type="text/javascript" src="script.js"></script>
+        <script src="https://kit.fontawesome.com/f1fb370a81.js" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -13,16 +13,13 @@ body{
     
   }
 
-input, spen{
-    font-size: 30px;
-}
-
 input{
     text-align: end;
     width: 60%;
     border-radius: 20px;
     margin-bottom: 30px;
-    padding: 15px
+    padding: 15px;
+    font-size: 30px;
 }
 
 button{
@@ -48,4 +45,44 @@ h1{
 
 button:hover{
     background-color: rgb(122, 122, 122);
+}
+
+.fas{
+    font-size: 30px;
+}
+
+.history{
+        width: 50%;
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -2000px);
+        background-color: #333;
+        color: #333;
+        border-radius: 20px;
+        transition: all 1.3s ease-in-out;
+        padding: 10px
+         
+}
+
+.history.show{
+        transform: translate(-50%, 0);
+}
+
+.sub{
+    background-color: rgb(70, 69, 69);
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+p{
+    font-size: 20px;
+    color: white;
+}
+
+spen{
+    float:right;
+    padding-right: 10px;
+    cursor: pointer;
 }
